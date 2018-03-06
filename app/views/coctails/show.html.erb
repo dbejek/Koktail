@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ime:</strong>
+  <%= @coctail.ime %>
+</p>
+
+<p>
+  <strong>Sestavine:</strong>
+  <%= @coctail.sestavine %>
+</p>
+
+<p>
+  <strong>Opis:</strong>
+  <%= @coctail.opis %>
+</p>
+
+<%= link_to 'Edit', edit_coctail_path(@coctail) %> |
+<%= link_to 'Back', coctails_path %>

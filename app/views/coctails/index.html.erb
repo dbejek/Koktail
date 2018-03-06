@@ -1,0 +1,44 @@
+<h1>Listing Coctails</h1>
+
+<b id="uporabnik"><%= current_user.email%></b>
+<br>
+<br>
+<b id="uporabnik"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></b>
+<table>
+  <thead>
+    <tr>
+      <th>Ime</th>
+      <th>Sestavine</th>
+      <th>Opis</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coctails.each do |coctail| %>
+      <tr>
+        <td><%= coctail.ime %></td>
+        <td>
+            <% list = coctail.sestavine %>
+            <% arr = list.split(" ") %>
+            <% arr.each do |result| %>
+                <%= result %><br>
+            <% end %>
+        </td>
+        
+        <td><%= coctail.opis %></td>
+        <td id="gumb" ><%= link_to 'Show', coctail %></td>
+        <% if current_user.admin == true %>
+            <td><%= link_to 'Edit', edit_coctail_path(coctail) %></td>
+            <td ><%= link_to 'Destroy', coctail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br >
+
+
+<span class="gumbek"><%= link_to 'New Coctail', new_coctail_path %></span>
+

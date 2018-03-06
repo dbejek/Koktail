@@ -1,0 +1,36 @@
+<%= form_for(@coctail) do |f| %>
+  <% if @coctail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coctail.errors.count, "error") %> prohibited this coctail from being saved:</h2>
+
+      <ul>
+      <% @coctail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ime %><br>
+    <%= f.text_field :ime %>
+  </div>
+  <div class="field">
+    <%= f.label :sestavine %><br>
+    <%= f.text_area :sestavine %>
+  </div>
+  <div class="field">
+    <%= f.label :opis %><br>
+    <%= f.text_area :opis %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <div>
+   <%= form_for @coctail, :html =>{:multipart =>true} do |f| %>
+                       <%= f.file_field :image %><br>
+                 			 <%= f.button :submit %>
+                     <% end %>
+  </div>
+
+<% end %>
